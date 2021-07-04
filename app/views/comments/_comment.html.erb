@@ -8,7 +8,7 @@
       <%= link_to "Delete", post_comment_path(@post, comment), method: :delete, remote: true, class: "btn text-danger" %>
     </div>
     <div class="right-right">
-      <span class="small"><%= comment.created_at.strftime("%d/%m/%y %h:%M") %></span>
+      <span class="small"><%= comment.created_at.strftime("%d/%m/%y %H:%M") %></span>
     </div>
   </div>
 </div>
