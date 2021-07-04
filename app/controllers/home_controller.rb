@@ -1,7 +1,9 @@
 class HomeController < ActionController::Base
   before_action :already_signed_in
 
-  def index; end
+  def index
+    render layout: "home"
+  end
 
   private
 
