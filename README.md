@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Single Page App named Socio
 
-Things you may want to cover:
+Step to run:
 
-* Ruby version
+* cp config/database.yml.sample config/database.yml
+* Add username & password in config/database.yml
+* Add google client_id & client_secret in
 
-* System dependencies
+EDITOR="vim" rails credentials:edit -e development
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* rails db:create
+* rails db:migrate
+* rails s
