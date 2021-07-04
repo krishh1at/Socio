@@ -1,0 +1,6 @@
+<% if @post.errors.present? %>
+  $('#post').html('<%= j (render "new") %>');
+<% else %>
+  $('#posts').append('<%= j (render @post) %>');
+  $('#post').html('<%= j (render "show") %>');
+<% end %>

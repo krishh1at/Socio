@@ -1,0 +1,8 @@
+$('#main').hide
+<% if @post.errors.present? %>
+  $('#post').html('<%= j (render "edit") %>');
+<% else %>
+  $('#posts-<%= @post %>').hide();
+  $('#posts').append('<%= j (render @post) %>');
+  $('#post').html('<%= j (render "show") %>');
+<% end %>

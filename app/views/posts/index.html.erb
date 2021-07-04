@@ -1,0 +1,14 @@
+<div id="main">
+  <div id="posts">
+    <% if @posts.present? %>
+      <%= render @posts %>
+    <% end %>
+  </div>
+
+  <%= link_to "Add new post", new_post_path, remote: true %>
+
+  <div id="form"></div>
+</div>
+
+<div id="post">
+</div>

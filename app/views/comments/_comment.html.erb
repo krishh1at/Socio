@@ -1,0 +1,14 @@
+<div class="pt-2" id="comment-<%= comment.id %>">
+  <h4 class="small font-weight-bold"><%= comment.user.full_name %></h4>
+  <p><%= comment.body %></p>
+
+  <div class="row">
+    <div class="float-left small">
+      <%= link_to "Edit", edit_post_comment_path(@post, comment), remote: true, class: "btn" %>
+      <%= link_to "Delete", post_comment_path(@post, comment), method: :delete, remote: true, class: "btn text-danger" %>
+    </div>
+    <div class="right-right">
+      <span class="small"><%= comment.created_at.strftime("%d/%m/%y %h:%M") %></span>
+    </div>
+  </div>
+</div>

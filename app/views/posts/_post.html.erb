@@ -1,0 +1,10 @@
+<div id="posts-<%= post.id %>" class="p-2">
+  <h3>
+    <%= link_to post.title, post_path(post), remote: true %>
+  </h3>
+  <p><%= post.body.length > 200 ? "#{post.body[0..200]}..." : post.body %></p>
+
+  <div class="row pt-n2">
+    <span class="small"><%= post.created_at.strftime("%d/%m/%y %h:%M") %></span>
+  </div>
+</div>

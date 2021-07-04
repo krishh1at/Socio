@@ -1,0 +1,47 @@
+<% provide(:button_label, "Add") %>
+<% provide(:button_disabled, "Adding...") %>
+
+<div id="post-<%= @post.id %>" class="p-2">
+  <h3 class="mb-2"><%= @post.title %></h3>
+  <p><%= @post.body %></p>
+</div>
+
+<div class="row pt-2">
+  <div class="float-left">
+    <%= link_to "Edit", edit_post_path(@post), remote: true, class: "btn btn-primary" %>
+    <%= link_to "Close", "#", class: "close btn btn-primary" %>
+    <%= link_to "Delete", post_path(@post), method: :delete, remote: true, class: "btn btn-danger" %>
+  </div>
+  <div class="float-right">
+    <span class="small"><%= @post.created_at.strftime("%d/%m/%y %h:%M") %></span>
+  </div>
+</div>
+
+<% @comments ||= @post.comments %>
+
+<div id="comments">
+  <%= render @comments %>
+</div>
+
+<div class="mt-4">
+  <h4 class="small font-weight-bold"><%= current_user.full_name %>:</h4>
+  <% @comment = @post.comments.build %>
+
+  <%= form_for [@post, @comment], remote: true do |f| %>
+    <%= render "shared/errors", resource: @comment %>
+    <div class="form-group m-2">
+      <%= f.text_area :body, placeholder: "Write...", class: "form-control" %>
+    </div
+    <div class="form-group mt-2">
+      <%= f.submit yield(:button_label), disabled_with: yield(:button_disabled) , title: yield(:button_label), class: "btn btn-primary float-right" %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $(function() {
+    $('#close').on('click'. function () {
+      $('.edit').hide();
+    });
+  });
+</script>

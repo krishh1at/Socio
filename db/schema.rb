@@ -14,9 +14,11 @@ ActiveRecord::Schema.define(version: 2021_07_04_131603) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -33,12 +35,15 @@ ActiveRecord::Schema.define(version: 2021_07_04_131603) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "email", null: false
-    t.string "provider"
-    t.string "uid"
+    t.string "provider", null: false
+    t.string "uid", null: false
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
 end
